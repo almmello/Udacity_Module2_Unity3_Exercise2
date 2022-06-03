@@ -5,6 +5,7 @@ connection = psycopg2.connect('dbname=example user=almmello')
 
 cursor = connection.cursor()
 
+cursor.execute('DROP TABLE IF EXISTS table2;')
 
 cursor.execute("""
   CREATE TABLE table2 (
@@ -13,8 +14,17 @@ cursor.execute("""
   );
 """)
 
-cursor.execute('INSERT INTO table2 (id, completed) VALUES (1, true);')
-# commit, so it does the executions on the db and persists in the db
+cursor.execute('INSERT INTO table2 (id, completed) VALUES (%s, %s);', (1, True))
+
+SQL = 'INSERT INTO table2 (id, completed) VALUES (%(id)s, %(completed)s);'
+
+data = {
+  'id': 2,
+  'completed': False
+}
+
+cursor.execute(SQL, data)
+
 connection.commit()
 
 cursor.close()
