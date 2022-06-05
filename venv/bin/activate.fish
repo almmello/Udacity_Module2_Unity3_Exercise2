@@ -29,7 +29,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/Users/Alexandre/Documents/GitHub/Udacity/Concepts/Exercise2/venv"
+set -gx VIRTUAL_ENV "/Users/Alexandre/Documents/GitHub/Udacity/Module2/Unity3/Udacity_Module2_Unity3_Exercise2/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
